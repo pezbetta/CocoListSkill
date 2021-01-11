@@ -1,0 +1,4 @@
+chalice
+requests
+requests-mock
+pytest

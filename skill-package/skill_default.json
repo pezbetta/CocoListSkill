@@ -1,0 +1,58 @@
+{
+  "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "es-ES": {
+          "summary": "Skill to sync Alexa Shopping List and HA shopping list",
+          "examplePhrases": [
+            "Alexa add eggs to the shopping list"
+          ],
+          "name": "HA-Shopping-List-Skill",
+          "description": "This skill will copy your new items from Alexa shopping list to your home assistant shopping list"
+        }
+      },
+      "isAvailableWorldwide": true,
+      "testingInstructions": "Sample Testing Instructions.",
+      "category": "KNOWLEDGE_AND_TRIVIA",
+      "distributionCountries": []
+    },
+    "apis": {
+      "householdList": {
+        "endpoint": {
+          "uri": ""
+        }
+      }
+    },
+    "permissions": [
+      {
+        "name": "alexa::household:lists:read"
+      }
+    ],
+    "events": {
+      "endpoint": {
+        "uri": ""
+      },
+      "subscriptions": [
+        {
+          "eventName": "ITEMS_CREATED"
+        },
+        {
+          "eventName": "ITEMS_UPDATED"
+        },
+        {
+          "eventName": "ITEMS_DELETED"
+        },
+        {
+          "eventName": "LIST_CREATED"
+        },
+        {
+          "eventName": "LIST_UPDATED"
+        },
+        {
+          "eventName": "LIST_DELETED"
+        }
+      ]
+    },
+    "manifestVersion": "1.0"
+  }
+}

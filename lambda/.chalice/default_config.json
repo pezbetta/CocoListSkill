@@ -1,0 +1,12 @@
+{
+  "version": "2.0",
+  "app_name": "chalice-shopping-list",
+  "stages": {
+    "dev": {
+      "environment_variables": {
+        "HA_TOKEN": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+        "HA_HOST": "https://your_home_assitant_url.com"
+      }
+    }
+  }
+}
