@@ -4,12 +4,45 @@
 
 Everytime you said something like "Alexa, add eggs to my shopping list". Alexa generates an event. We are going to add and Skill and a Lambda function which will capture that event and add the same item which was added into Alexa Shopping List into Home Assistant Shopping List.
 
+It can work with your Home-Assistant instance be accesible from the Internet or by using [Nabu Casa webhooks](https://www.nabucasa.com/config/webhooks/).
+
 ## What do you need before start?
 
-- Your Home Assitant instance should be accesible from the Internet
+- Your Home Assitant instance should be accesible from the Internet (unless using Nabu Casa)
 - Add [Shopping list integration to your Home Asisstant](https://www.home-assistant.io/integrations/shopping_list/)
 - Have AWS account configure in your computer with aws-cli
 - [Create a Long Lived Token for your Home Assistant](https://developers.home-assistant.io/docs/auth_api/#long-lived-access-token)
+
+### Using Nabu Casa webhooks
+
+If your HA instance is not accesible from the internet but you are using Nabu Casa service you can still use this project. Just need more thing to make it work. You need to add an automation like this:
+
+```yaml
+alias: Alexa add item to shopping list
+trigger:
+- platform: webhook
+  webhook_id: add-shopping-list
+condition: []
+action:
+- service: shopping_list.add_item
+  data_template:
+    name: '{{ trigger.json.name }}'
+mode: single
+```
+
+Once you have created this automation go to Configuration > Home Assistant Clous > Webhooks and find out which is your webhook endpoint
+
+In case you want to test if the webhook + automation works you can try this:
+
+```bash
+curl -X POST -H "Content-Type: application/json" \
+  -d '{"name":"test item"}' \
+  https://hooks.nabu.casa/webhook # Replace this with your endpoint
+```
+
+Go to your shopping list and check if `test item` is there.
+
+Keep you webhook endpoint. You will need it to configure the skill.
 
 ## How to setup the Alexa skill + Lambda
 
@@ -25,6 +58,8 @@ Modify these params:
 "HA_TOKEN": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
 "HA_HOST": "https://your_home_assitant_url.com"
 ```
+
+>> If you are using Nabu Casa put your webhook into HA_HOST and delete the section for token. You don't need it.
 
 Now make this the valid config file: `mv default_config.json config.json`
 
