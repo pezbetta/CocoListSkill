@@ -2,7 +2,7 @@
 
 ## How it works?
 
-Everytime you said something like "Alexa, add eggs to my shopping list". Alexa generates an event. We are going to add and Skill and a Lambda function which will capture that event and add the same item which was added into Alexa Shopping List into Home Assistant Shopping List.
+Everytime you said something like "Alexa, add eggs to my shopping list". Alexa generates an event. We are going to add an Alexa Skill and a Lambda function which will capture that event and add the same item which was added into Alexa Shopping List into Home Assistant Shopping List.
 
 It can work with your Home-Assistant instance be accesible from the Internet or by using [Nabu Casa webhooks](https://www.nabucasa.com/config/webhooks/).
 
@@ -90,7 +90,7 @@ ask --version  # Check if installation is ok
 
 ### Deploy the Alexa Skill
 
-Before deploying the skill you will need to indicate which Lambda we want to call when a new item is added to the shopping list. In order to do that you will need to edit the file `skill-package/skill.json`:
+Before deploying the skill you will need to indicate which Lambda you want want to call when a new item is added to the shopping list. In order to do this you will need to edit the file `skill-package/skill.json`:
 
 ```json
 "endpoint": {
@@ -98,6 +98,8 @@ Before deploying the skill you will need to indicate which Lambda we want to cal
         // Change this lambda ARN for yours, from previous step. 
       }
 ```
+
+Now make this the valid config file: mv skill-package/skill_default.json skill-package/skill.json
 
 ```bash
 make skill-deploy:
