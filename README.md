@@ -144,11 +144,11 @@ If you run into this problem try the next steps:
 
 Now we need to link your lambda to acept events comming from your skill. Go to AWS lambda console. Find the new lambda function.
 
-[lambda AWS console](images/lambda_console_warning.png)
+![lambda AWS console](images/lambda_console_warning.png)
 
 Once you see the this screen, you would be able to see that your lambda have a trigger already. But this is not especifc to your skill. Delete this trigger. Once you have deleted the old trigger we need to add a new one. Click on `Add trigger`. On the droplist select `Alexa Skills Kit`.
 
-[lambda AWS console](images/add_new_trigger.png)
+![lambda AWS console](images/add_new_trigger.png)
 
 Now you need to add your skill ID here. You can get your skillId usgin this command `make show-skill-id`
 
