@@ -93,19 +93,52 @@ ask --version  # Check if installation is ok
 Before deploying the skill you will need to indicate which Lambda you want want to call when a new item is added to the shopping list. In order to do this you will need to edit the file `skill-package/skill.json`:
 
 ```json
-"endpoint": {
-        "uri": "arn:aws:lambda:eu-west-1:XXXXXXXXXXXXX:function:chalice-shopping-list-dev-lambda_handler"  
-        // Change this lambda ARN for yours, from previous step. 
-      }
+"events": {
+  "endpoint": {
+          "uri": "arn:aws:lambda:eu-west-1:XXXXXXXXXXXXX:function:chalice-shopping-list-dev-lambda_handler"  
+          // Change this lambda ARN for yours, from previous step. 
+        }
+[...]
 ```
 
 Now make this the valid config file: mv skill-package/skill_default.json skill-package/skill.json
 
 ```bash
-make skill-deploy:
+make skill-deploy
 ```
 
 Visit [Alexa developers console](https://developer.amazon.com) and check if your new skill is there.
+
+#### Troubleshooting
+
+You may get this error while trying to deploy the Alexa Skill:
+
+```
+[Error]: {
+  "skill": {
+    "resources": [
+      {
+        "action": "CREATE",
+        "errors": [
+          {
+            "message": "The trigger setting for the Lambda arn:aws:lambda:XXXXXXXXXX:chalice-shopping-list-dev-lambda_handler is invalid."
+          }
+        ],
+        "name": "Manifest",
+        "status": "FAILED"
+      }
+    ]
+  },
+  "status": "FAILED"
+}
+```
+
+If you run into this problem try the next steps:
+
+1. Go to AWS Lambda console. Visit your new lambda function page.
+2. If there are any triggers link to it. Delete them.
+3. Add a new one. Select Alexa Skills Kit. Disable checking the ID.
+4. Now deploying the Alexa Skill should work.
 
 ### Link your lambda function to your skill
 
