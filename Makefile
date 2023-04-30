@@ -15,7 +15,7 @@ venv:
 	venv/bin/pip install -r lambda/requirements.txt
 
 lambda-deploy: venv
-	cd lambda && ..venv/bin/chalice deploy
+	cd lambda && ../venv/bin/chalice deploy
 
 skill-deploy:
 	ask deploy
