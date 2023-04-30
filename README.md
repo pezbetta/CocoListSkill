@@ -1,5 +1,7 @@
 # CocoListSkill
 
+## :warning: The code doesn't work anymore because Alexa now requires Account Liking for List Skills. :warning:
+
 ## How it works?
 
 Everytime you said something like "Alexa, add eggs to my shopping list". Alexa generates an event. We are going to add an Alexa Skill and a Lambda function which will capture that event and add the same item which was added into Alexa Shopping List into Home Assistant Shopping List.
