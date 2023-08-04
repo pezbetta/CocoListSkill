@@ -62,7 +62,7 @@ Modify these params:
 "HA_HOST": "https://your_home_assitant_url.com"
 ```
 
->> If you are using Nabu Casa put your webhook into HA_HOST and delete the section for token. You don't need it.
+> If you are using Nabu Casa put your webhook into HA_HOST and delete the section for token. You don't need it.
 
 Now make this the valid config file: `mv default_config.json config.json`
 
@@ -152,10 +152,10 @@ For now, to bypass this issue we can use Home Assistant auth system. In order to
 If you have everything setup as describe until this point just execute this command. Remember to use your own URL.
 
 ```bash
-python3 prepare_account_linking.py example.ui.nabu.casa  # Use here your HA URL
+python prepare_account_linking.py example.ui.nabu.casa  # Use here your HA URL
 ```
 
->> If you just need to do this extra step: After activating account linking go to the Alexa app and configure the Skill. This time you need to login in your Home-Assitant instace with your account.
+> If you just need to do this extra step: After activating account linking go to the Alexa app and configure the Skill. This time you need to login in your Home-Assitant instace with your account.
 
 ### Link your lambda function to your skill
 
