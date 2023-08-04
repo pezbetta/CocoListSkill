@@ -1,0 +1,16 @@
+{
+    "accountLinkingRequest": {
+      "accessTokenScheme": "HTTP_BASIC",
+      "accessTokenUrl": "[YOUR_HA_URL]/auth/token",
+      "authorizationUrl": "[YOUR_HA_URL]/auth/authorize",
+      "clientId": "https://layla.amazon.com/",
+      "clientSecret": "home-assitant-coco",
+      "defaultTokenExpirationInSeconds": 3600,
+      "domains": [],
+      "scopes": [
+        "smart_home"
+      ],
+      "skipOnEnablement": false,
+      "type": "AUTH_CODE"
+    }
+}

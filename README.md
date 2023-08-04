@@ -1,6 +1,7 @@
 # CocoListSkill
 
-## :warning: The code doesn't work anymore because Alexa now requires Account Liking for List Skills. :warning:
+## :warning: Update 04/08/2023 There is a new additional step to make this work. Check Account Linking section.
+
 
 ## How it works?
 
@@ -142,6 +143,20 @@ If you run into this problem try the next steps:
 3. Add a new one. Select Alexa Skills Kit. Disable checking the ID.
 4. Now deploying the Alexa Skill should work.
 
+### Account Linking
+
+Since March 2023 Alexa List Skills required account linking.
+
+For now, to bypass this issue we can use Home Assistant auth system. In order to activate this you only need to have your Home Assistant instance accesible with HTTPS.
+
+If you have everything setup as describe until this point just execute this command. Remember to use your own URL.
+
+```bash
+python3 prepare_account_linking.py example.ui.nabu.casa  # Use here your HA URL
+```
+
+>> If you just need to do this extra step: After activating account linking go to the Alexa app and configure the Skill. This time you need to login in your Home-Assitant instace with your account.
+
 ### Link your lambda function to your skill
 
 Now we need to link your lambda to acept events comming from your skill. Go to AWS lambda console. Find the new lambda function.
@@ -161,4 +176,5 @@ Got to the Alexa app and activate the skill.
 - From the Alexa app go to `Skills`
 - Go to tab `My Skills`
 - Select `Developers Skills`
-- And activate `HA-Shopping-List-Skill`
+- Activate the skill `HA-Shopping-List-Skill`
+- Link the account using your home-assitant account
